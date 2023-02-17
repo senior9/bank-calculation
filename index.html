@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+        <h1 class="text-3xl text-center mt-5">Wecome to <span class=" text-sky-500" >Baper Bank</span></h1>
+        <form id="form" class="bg-green-200 w-80 h-72 m-auto mt-5 text-center" action="">
+            Email :<input  class=" m-3 border-2" type="email" name="email" id="email"><br>
+            password :<input class="border-2 m-3
+            " type="password" name="password" id="password"> <br>
+            <input class=" bg-slate-500 w-36 p-4" type="submit" value="Submit">
+        </form>
+        <script>
+            document.getElementById("form").addEventListener("click",function() {
+                event.preventDefault();
+                const email= document.getElementById("email").value;
+                const password= document.getElementById("password").value;
+                console.log(email,password);
+                if (email=== "OVI215188@GMAIL.COM" && password === "asdf"){
+                    window.location.href="./bank.html"
+                }
+                
+                
+            })
+        </script>
+</body>
+</html>

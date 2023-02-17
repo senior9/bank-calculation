@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title> 
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+     <h1 class="text-center text-3xl "> Baper Bank e <span class="text-orange-700"> Cash</span> e Welcome</h1>
+     <div class="flex">
+        <div class="w-48 bg-blue-400 h-28  rounded mx-auto mt-6"><h2 class="text-white text-center font-bold m-3 mx-auto text-2xl">Deposit</h2> <p class="text-3xl text-center mt-4 text-orange-200" >$ <span id="deposit-amount">000</span></p></div>
+     <div class="w-48 bg-indigo-600 h-28  rounded mx-auto mt-6"><h2 class="text-white text-center m-3 font-bold mx-auto text-2xl">Widthdraw</h2><p class="text-3xl text-center mt-4 text-orange-200">$ <span id="widthdraw-amount">000</span></p></div>
+     <div class="w-48 bg-red-400 h-28  rounded mx-auto mt-6"><h2 class="text-white text-center m-3 font-bold mx-auto text-2xl">Balance</h2><p class="text-3xl text-center mt-4 text-indigo-50">$ <span id="balance">1200</span></p></div>
+     </div>
+     <div class="flex">
+        <form id="form-deposit" class="bg-green-200 w-96 h-44 ml-56 mt-5 text-center" action="">
+            <input id="text-deposit"  class=" m-3 border-2" type="text" name="email" id="email">
+         <br>
+            <input id="deposit" class=" bg-fuchsia-500 w-36 p-4" type="submit" value="Add Depositi">
+        </form>
+
+
+        <form id="widthdraw-button" class="bg-green-200 w-80 h-44 ml-56 mt-5 text-center" action="">
+            <input  class=" m-3 border-2" type="text" name="text" id="widthdraw-input">
+         <br>
+            <input class=" bg-amber-500 w-36 p-4" type="submit" value="Widthdraw">
+        </form>
+     </div>
+     <script>
+        
+        document.getElementById("form-deposit").addEventListener("submit", function(){
+            event.preventDefault();
+            const depositField = document.getElementById("text-deposit")
+            const newDepositAmountString = depositField.value;
+            const stringToNum= parseFloat(newDepositAmountString);
+            const depositTotalElement = document.getElementById('deposit-amount')
+            const previousDepositTotal =  depositTotalElement.innerText;
+            const defaultString = parseFloat(previousDepositTotal);
+            const currentDepositTotal = defaultString+stringToNum;
+            depositTotalElement.innerText =currentDepositTotal;
+            // console.log(depositTotal);
+            const getBalanceField = document.getElementById('balance');
+             const previousBalance = getBalanceField.innerText;
+             const stringToNumbalance =parseFloat(previousBalance);
+             const newBalance = stringToNumbalance +currentDepositTotal;
+             getBalanceField.innerText =newBalance;
+
+
+         depositField.value= "";
+        })
+
+        document.getElementById("widthdraw-button").addEventListener("submit",function(){
+         event.preventDefault();
+         const inputWidthdrawField = document.getElementById("widthdraw-input");
+         const inputValue =inputWidthdrawField.value;
+         const inputValueString = parseFloat(inputValue);
+
+
+         const WidthdrawAmount = document.getElementById("widthdraw-amount");
+         const getWidthdrawAmountField = WidthdrawAmount.innerText;
+         console.log(getWidthdrawAmountField);
+         const WidthdrawAmountToString = parseFloat(getWidthdrawAmountField);
+          const totalWidtdrawBalance = inputValueString + WidthdrawAmountToString;
+         WidthdrawAmount.innerText = totalWidtdrawBalance;
+
+
+         const mainBlance = document.getElementById("balance");
+         const mainBalanceText =mainBlance.innerText;
+         const balanceStringToNum = parseFloat(mainBalanceText);
+         const newBalance =  balanceStringToNum -inputValueString;
+         mainBlance.innerText =newBalance;
+
+
+
+         inputWidthdrawField.value ="";
+        })
+
+        
+
+     </script>
+</body>
+</html>
